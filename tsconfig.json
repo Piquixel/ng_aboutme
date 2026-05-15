@@ -4,15 +4,15 @@
   "compileOnSave": false,
   "compilerOptions": {
     "paths": {
-      "components/*": ["/src/app/components/*"],
-      "pages/*": ["/src/app/pages/*"],
-      "data/*": ["/src/app/models/data/*"],
-      "enums/*": ["src/app/models/enums/*"],
-      "guards/*": ["src/app/models/guards/*"],
-      "interfaces/*": ["src/app/models/interfaces/*"],
-      "strategies/*": ["src/app/models/strategies/*"],
-      "models/*": ["src/app/models/*"],
-      "services/*": ["src/app/services/*"]
+      "components/*": ["./src/app/components/*"],
+      "pages/*": ["./src/app/pages/*"],
+      "data/*": ["./src/app/models/data/*"],
+      "enums/*": ["./src/app/models/enums/*"],
+      "guards/*": ["./src/app/models/guards/*"],
+      "interfaces/*": ["./src/app/models/interfaces/*"],
+      "strategies/*": ["./src/app/models/strategies/*"],
+      "models/*": ["./src/app/models/*"],
+      "services/*": ["./src/app/services/*"]
     },
     "strict": true,
     "noImplicitOverride": true,

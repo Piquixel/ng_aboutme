@@ -1,0 +1,162 @@
+<div id="container" class="relative h-(--full-height) w-full overflow-y-scroll">
+  <section class="relative hero h-full">
+    <div class="hero-content flex flex-col text-center">
+      <hgroup class="mb-4 text-center font-semibold tracking-wider">
+        <h1 class="text-6xl/20">Front-End Developer</h1>
+        <h2 class="text-4xl/16 text-neutral-400">Thomas FETU</h2>
+      </hgroup>
+      <span class="flex gap-4">
+        <button
+          class="btn rounded-sm transition-transform btn-secondary hover:-translate-y-0.5"
+          routerLink="/contact"
+          >Contact Me <svg lucideArrowRight size="16"></svg
+        ></button>
+        <button class="btn rounded-sm transition-transform btn-secondary hover:-translate-y-0.5"
+          >Check Resume <svg lucideTextSearch size="16"></svg
+        ></button>
+      </span>
+      <button class="absolute bottom-8"><svg lucideMouse></svg></button>
+    </div>
+  </section>
+  <section class="mx-auto grid w-270 grid-cols-4 gap-4">
+    @if (userData$ | async; as userData) {
+      @let user = userData.discord_user;
+      <div
+        class="col-span-2 flex items-center gap-4 overflow-hidden rounded-lg border border-white/10 bg-base-100/50 p-5 shadow backdrop-blur-xl">
+        <img
+          class="size-64 rounded-md outline outline-white/10"
+          [src]="userService.getAvatar(user.avatar, 256)"
+          alt="" />
+
+        <div class="flex flex-col gap-4">
+          <p class="text-2xl/6 font-semibold tracking-wide text-neutral-400"
+            ><span class="text-neutral-200">Hi, I'm {{ user.global_name || user.username }}.</span
+            ><br />
+            I like to experiment and sharpen my web development skills.</p
+          >
+          <button class="btn rounded-full btn-primary" routerLink="/contact"
+            >Contact Me <svg class="align-middle" lucideArrowRight size="16"></svg
+          ></button>
+        </div>
+      </div>
+      <div
+        class="col-span-2 overflow-hidden rounded-lg border border-white/10 bg-base-100/50 p-5 shadow backdrop-blur-xl">
+        <ul class="grid auto-cols-fr grid-flow-col gap-2">
+          @for (link of links; track link.url) {
+            <li class="relative aspect-2/1 text-center">
+              <a [href]="link.url">
+                <img
+                  class="size-full rounded-md bg-white object-scale-down object-center outline outline-white/10"
+                  [src]="faviconService.getFavicon(link.url)"
+                  alt="" />
+              </a>
+              {{ link.name | titlecase }}
+            </li>
+          }
+        </ul>
+      </div>
+      @let activities = userData.activities;
+      @if (activities.length) {
+        <div
+          class="col-span-4 flex flex-wrap overflow-hidden rounded-lg border border-white/10 bg-base-100/50 p-5 shadow backdrop-blur-xl">
+          <span class="mb-2 w-full text-lg/6 font-semibold">My Activity</span>
+          <div class="grid h-42 w-full auto-cols-fr grid-flow-col gap-4">
+            @for (activity of activities; track activity.application_id) {
+              <div
+                class="relative flex size-full flex-row-reverse items-end gap-2.5 overflow-hidden rounded-lg border border-white/10 bg-base-200 p-2 backdrop-blur-lg">
+                <img
+                  class="absolute inset-0 size-full object-cover object-center opacity-10 blur-md contrast-75 saturate-120"
+                  [src]="
+                    userService.getActivityThumbnail(
+                      activity.assets?.large_image,
+                      activity.application_id,
+                      256
+                    )
+                  "
+                  alt="" />
+                <img
+                  class="aspect-square h-full rounded-md border border-white/10 object-cover object-center opacity-85 shadow-md"
+                  [src]="
+                    userService.getActivityThumbnail(
+                      activity.assets?.large_image,
+                      activity.application_id,
+                      256
+                    )
+                  "
+                  alt="" />
+                <div
+                  class="text-shadow-xl relative flex w-full flex-col overflow-hidden"
+                  id="infos">
+                  <span class="truncate text-base font-semibold">{{ activity.name }}</span>
+                  <span class="truncate text-sm tracking-wide">{{ activity.details }}</span>
+                  <span class="truncate text-sm tracking-wide text-neutral-400">{{
+                    activity.state
+                  }}</span>
+                </div>
+              </div>
+            }
+          </div>
+        </div>
+      }
+      <div
+        class="col-span-1 flex flex-col items-center gap-2 overflow-hidden rounded-lg border border-white/10 bg-base-100/50 p-5 shadow backdrop-blur-xl">
+        <svg lucideMapPin size="48"></svg>
+        Verviers, Belgium
+      </div>
+      <div
+        class="col-span-3 flex flex-col gap-2 overflow-hidden rounded-lg border border-white/10 bg-base-100/50 p-5 shadow backdrop-blur-xl">
+        <span class="text-lg/6 font-semibold">My Email</span>
+        <div class="flex items-center gap-2">
+          <code class="rounded-sm border border-white/10 bg-base-300 px-2 py-1">{{ email }}</code>
+          <button (click)="copyToClipboard(email)" class="btn h-9 rounded-md"
+            >Copy <svg lucideCopy size="16"></svg
+          ></button>
+        </div>
+      </div>
+    }
+  </section>
+  <section class="mx-auto w-270 prose-headings:prose-xl">
+    <h3 class="font-semibold tracking-wider">
+      <div class="divider my-16">Projects</div>
+    </h3>
+    <div
+      class="overflow-hidden rounded-lg border border-white/10 bg-base-100/50 p-5 shadow backdrop-blur-xl">
+      @if (schoolRepos$ | async; as schoolRepos) {
+        <h4>School Work</h4>
+        <div class="grid grid-cols-2 gap-2">
+          @for (repo of schoolRepos; track repo.id) {
+            <app-repo-card [filter]="repoFilters[0]" [repo]="repo" />
+          }
+        </div>
+      }
+
+      @if (experimentRepos$ | async; as experiments) {
+        <h4>Experiments</h4>
+        <div class="grid grid-cols-2 gap-2">
+          @for (repo of experiments; track repo.id) {
+            <app-repo-card [filter]="repoFilters[1]" [repo]="repo" />
+          }
+        </div>
+      }
+
+      @if (archiveRepos$ | async; as archives) {
+        <h4>Early School Work</h4>
+        <div class="grid grid-cols-2 gap-2">
+          @for (repo of archives; track repo.id) {
+            <app-repo-card [filter]="repoFilters[2]" [repo]="repo" />
+          }
+        </div>
+      }
+    </div>
+  </section>
+  <section class="mx-auto prose-xl mt-16 w-270">
+    <h3 class="font-semibold tracking-wider">
+      <div class="divider">Skills</div>
+    </h3>
+  </section>
+  <section class="mx-auto prose-xl mt-16 w-270">
+    <h3 class="font-semibold tracking-wider">
+      <div class="divider">Education</div>
+    </h3>
+  </section>
+</div>
