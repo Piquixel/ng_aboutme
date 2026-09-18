@@ -1,9 +1,43 @@
 {
   "arrowParens": "avoid",
   "bracketSameLine": true,
-  "bracketSpacing": true,
+  "bracketSpacing": false,
   "htmlWhitespaceSensitivity": "strict",
   "overrides": [
+    {
+      "files": ".vscode/*.json",
+      "options": {
+        "parser": "jsonc"
+      }
+    },
+    {
+      "files": [
+        "**/*.json",
+        "**/.prettierrc"
+      ],
+      "options": {
+        "plugins": [
+          "prettier-plugin-expand-json",
+          "prettier-plugin-sort-json"
+        ]
+      }
+    },
+    {
+      "files": "**/*.yaml",
+      "options": {
+        "plugins": [
+          "prettier-plugin-yaml"
+        ]
+      }
+    },
+    {
+      "files": "**/*.md",
+      "options": {
+        "plugins": [
+          "prettier-plugin-markdown-html"
+        ]
+      }
+    },
     {
       "files": "*.html",
       "options": {
@@ -11,13 +45,20 @@
       }
     }
   ],
-  "plugins": ["prettier-plugin-tailwindcss"],
-  "printWidth": 100,
-  "quoteProps": "as-needed",
+  "plugins": [
+    "prettier-plugin-tailwindcss"
+  ],
+  "quoteProps": "consistent",
   "semi": true,
+  "singleAttributePerLine": false,
   "singleQuote": true,
-  "tailwindAttributes": ["myClassList", "/data-.*/"],
-  "tailwindFunctions": ["clsx"],
-  "tailwindStylesheet": "./src/tailwind.css",
+  "tailwindAttributes": [
+    "myClassList",
+    "/data-.*"
+  ],
+  "tailwindFunctions": [
+    "clsx"
+  ],
+  "tailwindStylesheet": "./src/styles.css",
   "trailingComma": "all"
 }
