@@ -1,15 +1,21 @@
 import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/core';
-import { provideRouter, TitleStrategy } from '@angular/router';
+import { provideRouter, TitleStrategy, withInMemoryScrolling, withViewTransitions } from '@angular/router';
 
-import { provideHttpClient } from '@angular/common/http';
-import { AppTitleStrategy } from 'strategies/title.strategy';
+import { AppTitleStrategy } from '$strategies/title.strategy';
+import { provideHttpClient, withInterceptors, withXhr } from '@angular/common/http';
 import { routes } from './app.routes';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
-    provideRouter(routes),
-    provideHttpClient(),
+    provideHttpClient(withXhr(), withInterceptors([])),
+    provideRouter(
+      routes,
+      withViewTransitions(),
+      withInMemoryScrolling({
+        scrollPositionRestoration: 'enabled'
+      })
+    ),
     { provide: TitleStrategy, useClass: AppTitleStrategy },
   ],
 };

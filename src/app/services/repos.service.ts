@@ -1,6 +1,6 @@
+import { Repo } from '$interfaces/repo-res.interface';
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { Repo } from 'interfaces/repo-res.interface';
 import { map } from 'rxjs';
 
 @Injectable({

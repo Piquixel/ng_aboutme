@@ -11,31 +11,21 @@
       }
     },
     {
-      "files": [
-        "**/*.json",
-        "**/.prettierrc"
-      ],
+      "files": ["**/*.json", "**/.prettierrc"],
       "options": {
-        "plugins": [
-          "prettier-plugin-expand-json",
-          "prettier-plugin-sort-json"
-        ]
+        "plugins": ["prettier-plugin-expand-json", "prettier-plugin-sort-json"]
       }
     },
     {
       "files": "**/*.yaml",
       "options": {
-        "plugins": [
-          "prettier-plugin-yaml"
-        ]
+        "plugins": ["prettier-plugin-yaml"]
       }
     },
     {
       "files": "**/*.md",
       "options": {
-        "plugins": [
-          "prettier-plugin-markdown-html"
-        ]
+        "plugins": ["prettier-plugin-markdown-html"]
       }
     },
     {
@@ -45,20 +35,13 @@
       }
     }
   ],
-  "plugins": [
-    "prettier-plugin-tailwindcss"
-  ],
+  "plugins": ["prettier-plugin-tailwindcss"],
   "quoteProps": "consistent",
   "semi": true,
   "singleAttributePerLine": false,
   "singleQuote": true,
-  "tailwindAttributes": [
-    "myClassList",
-    "/data-.*"
-  ],
-  "tailwindFunctions": [
-    "clsx"
-  ],
+  "tailwindAttributes": ["myClassList", "/data-.*"],
+  "tailwindFunctions": ["clsx"],
   "tailwindStylesheet": "./src/styles.css",
   "trailingComma": "all"
 }

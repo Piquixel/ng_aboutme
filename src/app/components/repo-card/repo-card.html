@@ -2,16 +2,18 @@
   <h5 class="flex items-center gap-2">
     {{ repo().name }}
     @if (repo().fork) {
-      <svg title="Forked" lucideBookCopy size="16"></svg>
+      <!-- <svg title="Forked" lucideBookCopy size="16"></svg> -->
     }
   </h5>
   <span class="text-sm">{{ repo().description }}</span>
   <div class="flex justify-between">
-    <span class="flex items-center gap-2 text-sm"
-      ><svg lucideClock size="16"></svg> {{ repo().created_at | date: 'longDate' }}
+    <span class="flex items-center gap-2 text-sm">
+      <!-- <svg lucideClock size="16"></svg> -->
+      {{ repo().created_at | date: 'longDate' }}
     </span>
-    <span class="flex items-center gap-2 text-sm"
-      ><svg lucideClockArrowUp size="16"></svg> {{ repo().updated_at | date: 'longDate' }}</span
+    <span class="flex items-center gap-2 text-sm">
+      <!-- <svg lucideClockArrowUp size="16"></svg> -->
+      {{ repo().updated_at | date: 'longDate' }}</span
     >
   </div>
   <div class="flex flex-nowrap gap-2">
@@ -20,8 +22,10 @@
     /></a>
     @if (repo().has_pages) {
       <a class="btn w-full shrink rounded-sm btn-primary" target="_blank" [href]="repo().homepage"
-        >Open Demo <svg lucideGlobe size="16"></svg
-      ></a>
+        >Open Demo
+        <!-- <svg lucideGlobe size="16">
+          </svg> -->
+      </a>
     }
   </div>
   <div class="flex gap-2">

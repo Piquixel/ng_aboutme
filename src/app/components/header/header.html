@@ -1,63 +1,10 @@
-<!-- <div class="relative flex items-start justify-between p-4">
-  @if (userData$ | async; as userData) {
-    @let user = userData.discord_user;
-    <div class="user-content flex items-center gap-5">
-      <img
-        class="size-32 rounded-lg border-4 border-base-100 bg-base-100 outline outline-white/10"
-        [src]="`https://cdn.discordapp.com/avatars/${userId}/${user.avatar}`"
-        alt="" />
-
-      <div class="tracking-wide">
-        @let status = userData.discord_status;
-        <p class="flex items-center gap-2.5 text-xl font-bold"
-          >Thomas FETU
-          <i
-            class="size-4 rounded-full bg-neutral-500"
-            [class.bg-green-500]="status === 'online'"
-            [class.bg-yellow-500]="status === 'idle'"
-            [class.bg-red-500]="status === 'dnd'"
-            [title]="status"></i
-        ></p>
-        <span class="text-sm text-neutral-400">{{ user.global_name || user.username }}</span>
-        <ul class="mt-2 flex gap-1.5">
-          @for (link of links; track link.url) {
-            <li>
-              <a target="_blank" [href]="link.url">
-                <img class="size-5" [src]="`/${link.name}.svg`" alt="" />
-              </a>
-            </li>
-          }
-        </ul>
-      </div>
-    </div>
-    @let activities = userData.activities;
-    @if (!!activities) {
-      <div class="activity-content flex w-xs flex-col justify-end gap-2">
-        @for (activity of activities; track activity.application_id) {
-          <div
-            class="flex h-24 w-full items-center gap-2.5 overflow-hidden rounded-lg border border-white/10 bg-base-100/50 p-2 backdrop-blur-lg">
-            <img
-              class="aspect-square h-full rounded-sm object-cover object-center outline outline-white/10"
-              [src]="getLink(activity.assets?.large_image, activity.application_id)"
-              alt="" />
-            <div class="z-1 flex flex-col overflow-hidden" id="infos">
-              <span class="truncate text-base font-semibold">{{ activity.name }}</span>
-              <span class="truncate text-sm tracking-wide">{{ activity.details }}</span>
-              <span class="truncate text-sm tracking-wide text-neutral-400">{{
-                activity.state
-              }}</span>
-            </div>
-          </div>
-        }
-      </div>
+<div class="navbar flex w-full items-center justify-between border-b border-white/10 px-8">
+  <h1 class="text-2xl font-bold tracking-wider">TF</h1>
+  <ul class="menu menu-horizontal">
+    @for (link of rawLinks; track $index) {
+      <li>
+        <button>{{ link | titlecase }}</button>
+      </li>
     }
-  }
-</div> -->
-<div class="navbar flex justify-center border-b border-white/10">
-  <ul class="menu menu-horizontal px-1">
-    <li routerLink="/home" routerLinkActive="border-b-2 border-orange-500"><a>Home</a></li>
-    <li routerLink="/projects" routerLinkActive="border-b-2 border-orange-500"><a>Projects</a></li>
-    <li routerLink="/about" routerLinkActive="border-b-2 border-orange-500"><a>About</a></li>
-    <li routerLink="/contact" routerLinkActive="border-b-2 border-orange-500"><a>Contact</a></li>
   </ul>
 </div>

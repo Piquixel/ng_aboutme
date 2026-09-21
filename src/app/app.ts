@@ -1,13 +1,13 @@
+import { Header } from '$components/header/header';
+import { LanyardService } from '$services/lanyard.service';
 import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { Header } from 'components/header/header';
-import { LanyardService } from 'services/lanyard.service';
+import { ScrollText } from './directives/scroll-text.directive';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Header],
+  imports: [RouterOutlet, Header, ScrollText],
   templateUrl: './app.html',
-  styleUrl: './app.scss',
 })
 export class App {
   private readonly _lanyard: LanyardService = inject(LanyardService);

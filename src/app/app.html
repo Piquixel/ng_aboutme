@@ -3,10 +3,20 @@
     class="absolute inset-0 size-full scale-105 object-cover object-center blur-md"
     src="https://dcdn.dstn.to/banners/383187323963047936"
     alt="" />
-  <header class="sticky">
-    <app-header class="glass" />
+  <header>
+    <app-header class="sticky top-0 glass" />
   </header>
-  <main class="relative">
+  <main class="relative h-full overflow-hidden">
+    <span
+      class="absolute top-[-11.5%] -rotate-5 animate-scroll font-mono text-9xl font-bold whitespace-nowrap text-white/1 text-stroke"
+      appScrollText>
+      About
+    </span>
+    <span
+      class="absolute top-[66%] translate-x-65 -rotate-5 animate-scroll font-mono text-9xl font-bold whitespace-nowrap text-white/1 text-stroke"
+      appScrollText>
+      About
+    </span>
     <router-outlet />
   </main>
   <footer></footer>

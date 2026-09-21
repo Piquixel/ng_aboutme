@@ -5,7 +5,7 @@ export interface LanyardData {
   active_on_discord_desktop: boolean;
   active_on_discord_mobile: boolean;
   listening_to_spotify: boolean;
-  spotify?: unknown;
+  spotify?: SpotifyData;
 }
 
 export interface Activity {
@@ -15,7 +15,7 @@ export interface Activity {
   details?: string;
   state?: string;
   application_id?: string;
-  timestamps?: { start?: number; end?: number };
+  timestamps?: {start?: number; end?: number};
   assets?: {
     large_image?: string;
     large_text?: string;
@@ -37,4 +37,16 @@ export interface LanyardMessage {
   op: number;
   t?: string;
   d: any;
+}
+
+export interface SpotifyData {
+  album: string;
+  album_art_url: string;
+  artist: string;
+  song: string;
+  timestamps: {
+    end: number;
+    start: number;
+  };
+  track_id: string;
 }

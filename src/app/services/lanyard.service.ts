@@ -1,5 +1,5 @@
+import { LanyardData, LanyardMessage } from '$interfaces/landyard.interface';
 import { Injectable, OnDestroy } from '@angular/core';
-import { LanyardData, LanyardMessage } from 'interfaces/landyard.interface';
 import { BehaviorSubject, Observable, Subscription, timer } from 'rxjs';
 import { webSocket, WebSocketSubject } from 'rxjs/webSocket';
 
